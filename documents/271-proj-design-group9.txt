@@ -1,0 +1,78 @@
+Group 9 (Oscar Pensamiento and Tahir Mohideen) - In a world without surge protectors
+
+Main {
+		begin reading from Excel sheet (160 transactions total)
+			insert data into vectors 
+				customer ID
+				amount to be transferred
+				account # withdraw
+				account # deposit
+				customer wealth
+				time deposit must be made
+		insert Jobs onto a vector
+		insert Jobs onto Queue (search thru vector)
+			add jobs onto queue on basis of time required (bool next_job)
+				note when 2 jobs have same time posting, wealth takes priority
+		make transfers according to how they are listed in Queue
+			create function to allow these transfers to occur when you are NOT at end of Queue
+		function that lets users know in real-time jobs being performed
+			all details on job and success notification
+		ADDITIONAL FUNCTIONALITY?
+			allow for user to make a transfer by receiving input
+			transfers will be sorted in Queue
+			let user decide when they are done
+				create function to allow input when user says they aren't done making transfers
+} END OF MAIN
+
+class Job {
+		private:  
+			int aTransferTo; //account number transfer to
+			int aTransferFr; //account number transfer from
+			int time; //measured in seconds
+			int cust_id; //customer id
+			int transfer_amt; //$ amount to be transferred
+		public: //getters and setters for class creation and value establishment/retrieval
+			Job();
+			int get_aTransferTo();
+			int set_aTransferTo(int trTo);
+			int get_aTransferFr();
+			int set_aTransferFr(int trFr);
+			int get_time();
+			int set_time(int sec);
+			int get_cust_id();
+			int set_cust_id(int id);
+			int get_transfer_amt();
+			int set_transfer_amt(int trans); 		
+	}
+
+	vector <Job> job_vector - Keep track of all 160 jobs w relevant info; Simple to search in vector and add items to Queue
+
+	queue <Job> job_queue - list jobs in order of importance; prioritize by TIME, THEN WEALTH
+		How function will work
+			Queue starts out empty
+			begin pushing jobs by searching thru vector and add items 
+				from job_vector - function that returns next quickest item and push it onto queue
+				
+	bool nextjob (vector <Job> &jobvector, queue <Job> &jobqueue) { //must access both to compare what's inside each
+		Job next_job; //temp job that will be replaced be equal to next quickest job, later pushed onto Queue
+		int counter = 0;
+		while (counter <jobvector.size() {
+			for (int i=0;i<jobvector.size();i++) { //go thru entire vector containing data type Job
+				if (jobvector[i]<jobvector[i+1] && jobvector[i].get_id!=jobqueue.back().get_id()) //make sure same job isn't being inserted into back of Queue
+					next_job = jobvector[i];
+				else {
+					if (jobvector[i+1] != jobqueue.back()) // once again check to see if same job isn't being inserted
+						next_job = jobvector[i+1];
+				}
+			}
+			jobqueue.push(next_job);
+			counter++;
+		}
+		return true; //cout << "successful queue insertions" when returns true in main
+	}
+		
+Potential issues with design:
+	1. Reading from csv file - how to sort thru file w/ istreamreader
+	2. Class construction - correct getters/setters, accessors?
+	3. Ability to read additional csv files with similar information - applicable for other situations
+	4. General syntax (functions involving data type Job, for example)
