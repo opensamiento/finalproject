@@ -101,8 +101,8 @@ void Job::set_dtime(int dtim)
 }
 
 
-int read_file(vector <string> &v);
-int str_conversion(string n_str);
+int read_file(vector <string> &v); //read in file, put into string
+int str_conversion(string n_str); //conversion from string to int
 int sorted_ints (vector <int> &vi, string int_str);
 void endl_conversion(vector <int> &vi, string int_str);
 
@@ -203,7 +203,7 @@ int main()
         if (current_hash==next_hash) //collision w time occurs here
         {
             cout << "ERROR, issue with job times! Will fix! \n";
-            if (current_wealth>next_wealth)
+            if (current_wealth>next_wealth) //compare wealth
             {
                 cout << "*********Job " << i << " takes priority due to wealth! Details further below. \n";
                 cout << "Data for Job " << i << ": " << endl;
@@ -240,21 +240,20 @@ int main()
                 time+=5;
                 if (time > sorted_jobs[i+1].get_dtime()) //remember time is the current time going. when this time is greater than the time we need to post a job by, we have failed our service
                 {
-                    fail++;
-                    cout <<"Unfortunately the job posted late. \n";
+                    fail++; //counter increases
+                    cout <<"Unfortunately the job posted late. \n"; //insufficient time to post job
                 }
                 else
                 {
-                    success++;
-                    cout <<"The job posted on time and clients are happy. \n";
+                    success++; //counter increases
+                    cout <<"The job posted on time and clients are happy. \n"; //no issues w time
                 }
-                //counters increase
             }
 
         }
         else
         {
-            cout << "SUCCESS! Job posting details below. \n";
+            cout << "SUCCESS! Job posting details below. \n"; //output job details
             cout << "Data for Job " << i << ": " << endl;
             cout << "ID: " << sorted_jobs[i].get_id() << endl;
             cout << "Transfer:  " << sorted_jobs[i].get_transfer() << endl;
@@ -276,23 +275,12 @@ int main()
         }
     }
 
-    cout << "DONE! Results below! \n \n \n";
+    cout << "DONE! Results below! \n \n \n"; //give breakdown of counters and fails, successes, time elapsed
     cout << "Total number of jobs: " << sorted_jobs.size() << endl;
     cout << "Successful postings: " << success << endl;
     cout << "Failed postings: " << fail << endl;
     cout << "Time elapsed: " << time << endl;
     cout << "\n \n \n THANKS FOR YOUR BUSINESS! \n";
-
-    /*for (i=0;i<sorted_jobs.size();
-    {
-        cout << "Data for Job " << i << ": " << endl;
-        cout << "ID: " << sorted_jobs[i].get_id() << endl;
-        //cout << "Transfer:  " << sorted_jobs[i].get_transfer() << endl;
-        //cout << "Withdraw: " << sorted_jobs[i].get_withdraw() << endl;
-        //cout << "Deposit: " << sorted_jobs[i].get_deposit() << endl;
-        //cout << "Wealth: " << sorted_jobs[i].get_wealth() << endl;
-        cout << "Time: " << sorted_jobs[i].get_dtime() << endl << endl << endl;
-    }*/
 
     return 0;
 }
@@ -326,12 +314,12 @@ int str_conversion (string n_str) //l=size of string being inserted (size of nos
     int real_int, l;
     l = n_str.size();
     char * new_array = new char [l];
-    for (int b=0;b<l;b++)
+    for (int b=0;b<l;b++) //copy chars int new array
     {
         new_array [b] = n_str [b];
     }
-    real_int = atoi(new_array);
-    return real_int;
+    real_int = atoi(new_array); //convert new array
+    return real_int; //return array as a int
 }
 
 void endl_conversion(vector <int> &vi, string int_str)
@@ -389,19 +377,19 @@ void swapp (int &x, int &y) //for use in quicksort, swapping values
     y = temp;
 }
 
-int part (vector <int> &vt, int left, int right)
+int part (vector <int> &vt, int left, int right) //for use in quicksort
 {
-    int pivot = vt [right];
+    int pivot = vt [right]; //pivot created
 	int i = left-1;
 	for (int j=left; j<=right-1; j++)
 	{
 		if (vt[j]<=pivot)
 		{
 			i++;
-			swapp (vt[i], vt[j]);
+			swapp (vt[i], vt[j]); //swap ints
 		}
 	}
-	swapp (vt[i+1], vt[right]);
+	swapp (vt[i+1], vt[right]); //swap here as well
 	return i+1;
 }
 
