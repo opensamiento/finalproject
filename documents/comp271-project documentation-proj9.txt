@@ -1,0 +1,85 @@
+﻿Oscar Pensamiento & Tahir Mohideen
+
+
+Project Description
+
+	Project 9: In a World Without Surge Protectors - A large storm fries all of the world’s ATMs. Your
+	part-time job at the bank is now a nightmare. So many phone calls from people requesting their money
+	moved from one account to another. In fact there’s a new call every second. It takes 5 seconds though
+	to process a request. Your boss is getting upset because you’re falling behind and some of the
+	aristocrats with big bucks are tired of waiting and making a big fuss. You decide to throw your headset
+	to the side and develop a piece of software such that your fellow tellers can add in the information:
+	customer ID, amount to be transferred, account # withdrawing from, account # depositing to,
+	customer’s wealth, and time the deposit must be posted by. Your solution will find the best means of
+	maximizing the transactions processed with minimal complaints from the aristocracy.
+	
+	
+	In order to find a viable solution to the predicament at hand, the project would require us to choose how
+	to sort our data and resolve conflicts with time postings overlapping with one another. When two jobs 
+	are in close proximity (where one job will HAVE to be cancelled), then the next logical step is to look at 
+	the wealth of the customer. The customer with more wealth will have his/her job posted and the other less
+	affluent customer will see his/her job fall by the wayside and shown as a cancelled transaction. The 
+	final results will show the user the total number of jobs (160 total), the total number of successful
+	jobs, and the total number of cancelled jobs as well as the time elapsed (160*5 = 800 seconds, where each
+	job will take 5 seconds to complete and there are 160 jobs total). The user will be able to see a 
+	success OR fail status for each job, with detailed looks on the job's data (the six categories that each 
+	job consists of, including account numbers and wealth).
+
+
+Data Structure(s) Use and Implementation
+
+	Most of our data structures consist of vectors and basic data types such as ints and strings. We preferred 	vectors since they are easierto work with when adding elements and referencing them in other cases. 
+	Arrays can be rather tedious in keeping track of what the proper lengths should be, the position of 	where you are inserting elements in the context of the entire list, and so on. 
+
+	Another data type we chose to use was classes and establising the proper setters and getters. This 
+	allowed us to create our own data type, Job, to keep track of the 6 data fields that were relevant to 	one job (such as time, wealth, and account numbers). 
+
+	One challenge we found was in utilizing a sorting algorithm for this data type Job, however. In trying 	to 	reference certain parts of an element within our job vector, we were having trouble sorting that type of 		vector (mostly due to issues with the data type of Job itself). We then decided to try to sort first by 		time in a separate vector and create a NEW vector that would allow us to sort things according to how 		times were sorted using our algorithm of choice (Quick Sort in this case). Then, we we able to move on and 	decide how to balance the issues in time conflicts (when we must decide which of two jobs we must post 	when two jobs have similar times).
+
+Instructions for program:
+
+	1. Open up the .proj file with your IDE of choice. 
+	2. Ensure the file you are required to read is in the root of the program folder. 
+	3. Run the program. 
+	4. Follow the directions on-screen.
+		Type in the name of the file EXACTLY as it shows up in your file explorer (with the extension 		included).
+	5. Data at this point will begin to be sorted properly.
+	6. Press 1 when you are ready to begin the job sorting process.
+	7. Allow for the program to finish with the output.
+	8. Review results. 
+	9. Press any key to close when ready.
+
+	
+
+System Specifications
+
+	Dell XPS 13
+	Windows 10 64-bit
+	8 GB RAM
+	IDE: Code::Blocks
+
+	Macbook Pro (2012)
+	Mac OS 10.10 (Yosemite)
+	8 GB RAM 1600 MHZ
+	IDE: Code::Blocks
+	
+	
+
+Project Breakdown
+
+	Oscar 
+	- reading in file, sorting data as it is read in
+	- sorting algorithm
+	- creation of class Job  
+	- documentation
+	- GitHub submissions
+
+	Tahir
+	- debugging on sorting data 
+	- time VS wealth prioritization
+	- data conversions
+	- job postings
+
+*Commentary/additional notes: Due to complications with Tahir's IDE/compiler, most of the actual debugging took
+place on Oscar's computer. The two of us actively met in-person frequently to ensure collaborations would not be an issue.
+

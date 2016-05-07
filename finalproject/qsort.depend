@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1462643922 source:c:\users\opens\desktop\cstuff\qsort\main.cpp
+	<iostream>
+	<fstream>
+	<cstring>
+	<vector>
+	<stdlib.h>
+	<math.h>
+
